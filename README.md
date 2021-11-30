@@ -8,7 +8,7 @@ yarn install
 
 yarn start
 
-2 - open a diif termanal tab and cd into the "deezer" dir and run the following commands:
+2 - open a new termanal tab and cd into the "deezer" dir and run the following commands:
 
 yarn install
 
