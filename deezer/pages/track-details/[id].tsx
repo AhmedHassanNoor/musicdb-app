@@ -6,6 +6,7 @@ import { Layout } from 'components/layout';
 import TopTracks from 'components/top-track';
 import Artist from 'components/artist';
 import Albums from 'components/albums';
+import theme from 'themes';
 
 interface Props {
   artist: ArtistInterface;
@@ -17,17 +18,19 @@ interface Props {
 const TrackDeatilsPage = ({ artist, topList, albums }: Props) => {
   return (
     <Layout isArtistPage>
-      <Box display={['block', 'flex']} my={2}>
-        {artist && (
-          <Artist hasTopTracks={topList?.length > 0} artist={artist} numOfAlumbs={albums?.length}/>
-        )}
-        {topList?.length > 0 && (
-          <TopTracks topList={topList}/>
+      <Box maxWidth={theme.maxHeaderWidth} p={[2, 3, 5]} m="0 auto">
+        <Box display={['block', 'flex']} my={2}>
+          {artist && (
+            <Artist hasTopTracks={topList?.length > 0} artist={artist} numOfAlumbs={albums?.length}/>
+          )}
+          {topList?.length > 0 && (
+            <TopTracks topList={topList}/>
+          )}
+        </Box>
+        {albums.length > 0 && (
+          <Albums albums={albums} />
         )}
       </Box>
-      {albums.length > 0 && (
-        <Albums albums={albums} />
-      )}
     </Layout>
   );
 };
