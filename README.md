@@ -1,15 +1,29 @@
 # musicdb-app
 
-#Steps to run this project:
 
-1 - Cd into "api" directory in the root and run the following commands:
+## Getting Started
+
+First, run the api server:
+
+cd into api/
+
+
+```bash
+yarn install
+
+yarn start
+```
+
+Then, run the development server:
+cd into deeze/
+
+```bash
 
 yarn install
 
 yarn start
+```
 
-2 - open a new termanal tab and cd into the "deezer" dir and run the following commands:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-yarn install
 
-yarn start
