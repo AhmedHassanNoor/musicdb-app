@@ -1,11 +1,13 @@
 # musicdb-app
 
 
-## Getting Started
+## To get this app running, there's 2 steps that needs to be completed
 
-First, run the api server:
+#Step 1: run the api server:
 
-cd into api/
+Aftter cloning the repo, cd into api/
+
+Then run...
 
 
 ```bash
@@ -14,7 +16,7 @@ yarn install
 yarn start
 ```
 
-Then, run the development server:
+After that, run the development server by going into the deeze folder:
 cd into deeze/
 
 ```bash
