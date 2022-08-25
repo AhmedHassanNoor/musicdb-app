@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Button } from 'components/_global/button';
 import { Box } from 'components/_global/box';
 import { setTrack } from 'redux/tracks/actions';
 import { css } from '@emotion/react';
@@ -13,64 +12,52 @@ const getSearchedTracks = async (searchParam: string): Promise<any> => {
   return await response.json();
 };
 
-const buttonDefaultStyle = () => css`
-      background: none;
-      color: inherit;
-      border: none;
-      padding: 0;
-      font-size: 20px;
-      cursor: pointer;
-      outline: inherit;
-      `;
-
 const Search = () => {
   const dispatch = useDispatch();
   const [searchParam, setSearchParam] = useState('');
 
-  const handleSubmit = (searchParam: string) => {
+  const handleSubmit = useCallback(() => {
     if (searchParam !== '') {
-      return getSearchedTracks(searchParam).then(
-          (res) => dispatch(setTrack(res.data)), // Todo: extract and store the needed partial response data into redux
-      );
+      return getSearchedTracks(searchParam).then((res) => dispatch(setTrack(res.data)));
     }
-  };
-
+  }, [searchParam]);
 
   return (
     <Box position="relative" width="100%" px="1">
-      <form onSubmit={(event) => {
-        event.preventDefault();
-        handleSubmit(searchParam);
-      }}>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit();
+        }}
+      >
         <Input
           css={css`
             border-top: 0;
             border-right: 0;
             border-left: 0;
             border-bottom: 1px solid ${theme.colors.lightGrey};
-            &:focus, &:active {
+            &:focus,
+            &:active {
               border-bottom: 1px solid ${theme.colors.lime};
-            } 
+            }
           `}
-          type="text"
+          type="search"
           value={searchParam || ''}
           onChange={(e) => setSearchParam(e.target.value)}
-          placeholder="Search"
+          placeholder="Search for a song, an album or an artist"
           fontSize="2"
           maxLength={50}
         />
-        <Box
-          position="absolute"
-          top="0"
-          right="5"
-        >
-          <Button
-            css={buttonDefaultStyle()}
-            type="button"
-          >
-            <FiSearch color={theme.colors.lime}/>
-          </Button>
-        </Box>
+        {!searchParam && (
+          <Box position="absolute" bottom="1" right="3">
+            <FiSearch
+              color={theme.colors.lime}
+              css={css`
+                cursor: pointer;
+              `}
+            />
+          </Box>
+        )}
       </form>
     </Box>
   );
