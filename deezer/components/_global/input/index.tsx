@@ -23,9 +23,9 @@ import {
 } from 'styled-system';
 
 interface InputProps {
-    invalid?: boolean;
-    reserveErrorSpace?: boolean;
-  }
+  invalid?: boolean;
+  reserveErrorSpace?: boolean;
+}
 
 type Props = InputProps &
   SpaceProps &
@@ -54,11 +54,11 @@ export const Input = styled.input<Props>`
       padding: ${theme.space[2]}px 12px;
       margin: 0;
 
-      ${invalid ?
-        css`
+      ${invalid
+        ? css`
             border-color: ${theme.colors.accent};
-          ` :
-        ''}
+          `
+        : ''}
 
       &:active,
       &:focus {
@@ -73,15 +73,5 @@ export const Input = styled.input<Props>`
       }
     `;
   }}
-  ${compose(
-      space,
-      fontSize,
-      width,
-      fontWeight,
-      lineHeight,
-      background,
-      borderRadius,
-      minWidth,
-      display,
-  )}
+  ${compose(space, fontSize, width, fontWeight, lineHeight, background, borderRadius, minWidth, display)}
 `;

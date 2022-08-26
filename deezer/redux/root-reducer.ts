@@ -5,11 +5,11 @@ import localforage from 'localforage';
 
 const isServer = typeof window === 'undefined';
 
-export const storage = !isServer ?
-  localforage.createInstance({
-    name: 'redux',
-  }) :
-  null;
+export const storage = !isServer
+  ? localforage.createInstance({
+      name: 'redux',
+    })
+  : null;
 
 const persistReducerFn = (config: any, reducer: any): typeof reducer => {
   if (isServer) {

@@ -10,15 +10,9 @@ const reduxPromiseListener = createReduxPromiseListener();
 const middleware = [thunk, reduxPromiseListener.middleware];
 const enhancers: any[] = [];
 
-const composeEnhancers =
-  (!isServer && (window as Window)['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']) ||
-  compose;
+const composeEnhancers = (!isServer && (window as Window)['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__']) || compose;
 
-const store = createStore(
-    rootReducer,
-    initialState,
-    composeEnhancers(...enhancers, applyMiddleware(...middleware)),
-);
+const store = createStore(rootReducer, initialState, composeEnhancers(...enhancers, applyMiddleware(...middleware)));
 
 if (!isServer && (window as Window)) {
   (window as Window)['__store__'] = store;

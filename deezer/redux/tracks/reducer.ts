@@ -1,6 +1,4 @@
-import {
-  Track,
-} from 'types/types';
+import { Track } from 'types/types';
 import { createReducer } from 'typesafe-actions';
 import { setTrack, clearTrack } from './actions';
 
@@ -32,12 +30,11 @@ const initialState: State = {
 };
 
 const trackReducer = createReducer(initialState)
-    .handleAction(setTrack, (state, { payload }) => ({
-      ...state,
-      tracks: payload,
-    }))
-    .handleAction(clearTrack, () => initialState);
+  .handleAction(setTrack, (state, { payload }) => ({
+    ...state,
+    tracks: payload,
+  }))
+  .handleAction(clearTrack, () => initialState);
 
 export default trackReducer;
 export type trackState = ReturnType<typeof trackReducer>;
-

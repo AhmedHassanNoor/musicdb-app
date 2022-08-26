@@ -46,15 +46,8 @@ export const Button = styled('button')<Props>`
       &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
-      }  `;
+      }
+    `;
   }}
-  ${compose(
-      space,
-      fontSize,
-      fontWeight,
-      lineHeight,
-      borderRadius,
-      display,
-      position,
-  )}
+  ${compose(space, fontSize, fontWeight, lineHeight, borderRadius, display, position)}
 `;

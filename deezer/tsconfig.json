@@ -7,7 +7,7 @@
       "redux/*": ["redux/*"],
       "types": ["@emotion/core"],
       "utils/*": ["utils/*"],
-      "assets/*": ["assets/*"],
+      "assets/*": ["assets/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -15,6 +15,7 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
