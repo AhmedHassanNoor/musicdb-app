@@ -16,8 +16,8 @@ yarn install
 yarn start
 ```
 
-After that, run the development server by going into the deeze folder:
-cd into deeze/
+After that, run the development server by going into the deezer folder:
+cd into deezer/
 
 ```bash
 
